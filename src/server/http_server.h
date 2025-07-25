@@ -1,5 +1,6 @@
 // src/server/http_server.h
 #pragma once
+#include "config/server_config.h"
 #include <string>
 #include <memory>
 #include <thread>
@@ -17,18 +18,18 @@ namespace utec {
 
     class HttpServer {
     public:
-        explicit HttpServer(const std::string& root_path, int port = 8080);
+        explicit HttpServer(const ServerConfig& config);
         ~HttpServer();
 
         bool start();
         void stop();
         bool isRunning() const;
 
-        int getPort() const { return port_; }
+        int getPort() const { return config_.port; }
+        const ServerConfig& getConfig() const { return config_; }
 
     private:
-        std::string root_path_;
-        int port_;
+        ServerConfig config_;
         bool running_;
 
         std::shared_ptr<DirectoryScanner> scanner_;
@@ -40,6 +41,7 @@ namespace utec {
 
         void setupRoutes();
         void printStartupInfo();
+        bool validateConfiguration();
     };
 
 } // namespace utec
