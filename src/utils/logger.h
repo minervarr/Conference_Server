@@ -1,6 +1,3 @@
-
-// ================================================================
-
 // src/utils/logger.h
 #pragma once
 #include <string>
@@ -11,10 +8,10 @@
 namespace utec {
 
     enum class LogLevel {
-        DEBUG,
-        INFO,
-        WARNING,
-        ERROR
+        LOG_DEBUG,    // Changed from DEBUG to avoid macro conflicts
+        LOG_INFO,     // Changed from INFO for consistency
+        LOG_WARNING,  // Changed from WARNING for consistency
+        LOG_ERROR     // Changed from ERROR for consistency
     };
 
     class Logger {
@@ -31,5 +28,3 @@ namespace utec {
     };
 
 } // namespace utec
-
-// ================================================================

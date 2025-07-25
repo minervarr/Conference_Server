@@ -3,6 +3,7 @@
 #include <string>
 #include <functional>
 #include <map>
+#include <memory>  // Added missing include
 
 // Forward declaration for httplib
 namespace httplib {
@@ -13,6 +14,7 @@ namespace httplib {
 namespace utec {
 
     class VideoApi;
+    struct ServerConfig;  // Forward declaration
 
     class RouteHandler {
     public:
@@ -38,5 +40,3 @@ namespace utec {
     };
 
 } // namespace utec
-
-// ================================================================

@@ -1,11 +1,10 @@
-// ================================================================
-
 // src/filesystem/directory_scanner.cpp
 #include "filesystem/directory_scanner.h"
 #include "filesystem/file_utils.h"
 #include "utils/string_utils.h"
 #include "utils/logger.h"
 #include <filesystem>
+#include <algorithm>  // Added missing include
 
 namespace fs = std::filesystem;
 

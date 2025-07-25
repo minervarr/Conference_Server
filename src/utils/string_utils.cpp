@@ -1,9 +1,9 @@
-
 // src/utils/string_utils.cpp
 #include "utils/string_utils.h"
 #include <algorithm>
 #include <sstream>
 #include <cctype>
+#include <iomanip>  // Added missing include
 
 namespace utec {
 

@@ -256,3 +256,5 @@ bool PathValidator::containsForbiddenName(const std::string& filename) {
 
     return FORBIDDEN_NAMES.find(lower_name) != FORBIDDEN_NAMES.end();
 }
+
+} // namespace utec
