@@ -33,9 +33,22 @@ set(SOURCES
         # Utils module
         src/utils/string_utils.cpp
         src/utils/logger.cpp
+        src/utils/logger.h
+        src/utils/string_utils.h
+        src/filesystem/file_utils.h
+        src/filesystem/directory_scanner.h
+        src/api/video_api.h
+        src/web/embedded_resources.h
+        src/web/template_engine.h
+        src/server/route_handler.h
+        src/server/http_server.h
+        src/api/video_api.cpp
+        src/web/template_engine.cpp
+        src/utils/string_utils.cpp
+        src/filesystem/directory_scanner.cpp
 )
 
-# Headers
+# Headers (for IDE support, not required for compilation)
 set(HEADERS
         # Server module
         src/server/http_server.h
@@ -57,16 +70,9 @@ set(HEADERS
         src/utils/string_utils.h
         src/utils/logger.h
         src/utils/types.h
-        "src/utils/types.h .h"
-        src/api/json_response.h
-        src/utils/logger.cpp
-        src/filesystem/file_utils.cpp
-        src/server/http_server.cpp
-        src/api/json_response.cpp
-        src/web/embedded_resources.cpp
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Compiler flags
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
@@ -79,3 +85,11 @@ if(WIN32)
 else()
     target_link_libraries(${PROJECT_NAME} pthread)
 endif()
+
+# Create necessary directories if they don't exist
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/src/server)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/src/filesystem)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/src/api)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/src/web)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/src/utils)
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/libs)
